@@ -112,3 +112,87 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//STEP 1
+const articles = document.querySelector(".articles");
+function articleCreator({title, date, firstParagraph, secondParagraph, thirdParagraph}){
+
+  //instantiate the elements
+  const article       = document.createElement("div");
+  const articleTitle  = document.createElement("h2");
+  const articleDate   = document.createElement("p");
+  const firstArticle  = document.createElement("p");
+  const secondArticle = document.createElement("p");
+  const thirdArticle  = document.createElement("p");
+  const articleButton = document.createElement("span");
+
+
+  //Setup structure of the elements by using appendChild
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(firstArticle);
+  article.appendChild(secondArticle);
+  article.appendChild(thirdArticle);
+  article.appendChild(articleButton);
+
+
+  //Add classes to the elements
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  articleButton.classList.add("expandButton");
+
+  //Set text content
+  articleTitle.textContent  = title;
+  articleDate.textContent   = date;
+  firstArticle.textContent  = firstParagraph;
+  secondArticle.textContent = secondParagraph;
+  thirdArticle.textContent  = thirdParagraph;
+  articleButton.textContent = "Expand";
+
+  //Add EventListener to the expandButton
+  articleButton.addEventListener("click", (e) => {
+    article.classList.toggle("article-open");
+  });
+
+  return article;
+};
+
+const allArticles = data.map(data =>{
+  return articleCreator(data);
+})
+
+allArticles.forEach(allArticles =>{
+  articles.appendChild(allArticles);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//END OF FILE
